@@ -1,8 +1,65 @@
 from parse import compile
 import logging
+import pandas as pd
+from typing import Set, List
+from transliterate import translit
+chars_to_remove = {
+    '!',
+    '"',
+    '#',
+    '%',
+    '&',
+    "'",
+    '(',
+    ')',
+    '*',
+    '+',
+    ',',
+    '-',
+    '.',
+    '/',
+    ':',
+    ';',
+    '<',
+    '=',
+    '>',
+    '?',
+    '[',
+    ']',
+    '_',
+    '`',
+    '«',
+    '°',
+    '²',
+    '³',
+    'µ',
+    '·',
+    '»',
+    '½',
+    '‑',
+    '–',
+    '‘',
+    '’',
+    '“',
+    '”',
+    '„',
+    '•',
+    '…',
+    '‰',
+    '″',
+    '₂',
+    '₃',
+    '€',
+    '™',
+    '→',
+    '−',
+    '∕',
+    '😀',
+    '😉',
+    '🙁',
+    '🙂'
 
-
-
+}
 
 def process_flags(flags:str) -> set:
     flags = flags.split(" ")
