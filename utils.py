@@ -65,33 +65,66 @@ def process_flags(flags:str) -> set:
     flags = [flag for flag in flags if flag in ["A", "B", "Z"]]
     return set(flags)
 
+
 def process_item(item:str) -> dict:
     pattern = """{flags1}: {version1} / {flags2}: {version2}"""
     p = compile(pattern)
+    pattern2 = """{flags1}: {version1} / {flags2}: {version2} / {flags3}: {version3}"""
+    p2 = compile(pattern2)
     resulting_dict = dict()
     lines = item.split("\n")
     for line in lines[1:]:
-        line = line.split(" | ")[0]
+        if "|" in line:
+            continue
         if line.startswith("#") or line == "":
             continue
-        try:
-            results = p.parse(line)
+        if line.count("/") == 1:
+            try:
+                results = p.parse(line)
+                flags1 = process_flags(results["flags1"])
+                flags2 = process_flags(results["flags2"])
+                version1 = results["version1"].replace("_", " ").casefold()
+                version2 = results["version2"].replace("_", " ").casefold()
+                
+                if (flags1, flags2) == ({"A"}, {"B"}):
+                    resulting_dict[version1] = "A"
+                    resulting_dict[version2] = "B"
+                if (flags1, flags2) == ({"A", "Z"}, {"B"}):
+                    resulting_dict[version2] = "B"
+            except Exception as e:
+                logging.debug(f"Found error {e} for line:")
+                logging.debug(line)
+        elif line.count("/") == 2:
+            try:
+                results = p2.parse(line)
+                flags1 = process_flags(results["flags1"])
+                flags2 = process_flags(results["flags2"])
+                flags3 = process_flags(results["flags3"])
+                version1 = results["version1"].replace("_", " ").casefold()
+                version2 = results["version2"].replace("_", " ").casefold()
+                version3 = results["version3"].replace("_", " ").casefold()
 
-            flags1 = process_flags(results["flags1"])
-            flags2 = process_flags(results["flags2"])
-
-            version1 = results["version1"].replace("_", " ").casefold()
-            version2 = results["version2"].replace("_", " ").casefold()
-            
-            if (flags1, flags2) == ({"A"}, {"B"}):
-                resulting_dict[version1] = "A"
-                resulting_dict[version2] = "B"
-            if (flags1, flags2) == ({"A", "Z"}, {"B"}):
-                resulting_dict[version2] = "B"
-        except Exception as e:
-            logging.debug(f"Found error {e} for line:")
-            logging.debug(line)
-
+                if "A" in flags1:
+                    american = version1
+                if "A" in flags2:
+                    american = version2
+                if "A" in flags3:
+                    american = version3
+                if "B" in flags1:
+                    brittish = version1
+                if "B" in flags2:
+                    brittish = version2
+                if "B" in flags3:
+                    brittish = version3
+                
+                if brittish != american:
+                    resulting_dict[american] = "A"
+                    resulting_dict[brittish] = "B"
+            except Exception as e:
+                logging.debug(f"Found error {e} for line:")
+                logging.debug(line)
+        else:
+            logging.warning(f"Weird formatting with 0 or >2 slashes:\n{line}")
     return resulting_dict
 
 def get_lexicon():
