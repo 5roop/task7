@@ -1,0 +1,218 @@
+
+
+By Richard Nordquist
+Updated on January 14, 2020
+
+The term British English refers to the varieties of the English language spoken and written in Great Britain (or, more narrowly defined, in England). Also called UK English, English English, and Anglo-English — though these terms are not applied consistently by linguists (or by anyone else for that matter).
+
+While British English "might serve as a unifying label," says Pam Peters, it "is not universally embraced. For some British citizens, this is because it seems to imply a broader base of usage than it actually includes. The 'standard' forms as written or spoken are mostly those of southern dialects" (English Historical Linguistics, Vol. 2, 2012).
+British English in Popular Culture
+
+Journalists, humorists, and others have had plenty to say about British English and its role in the world of language, as these quotes show.
+Terry Eagleton
+
+    "Most people know that when a British schoolteacher asks his pupils to take out their rubbers, he is inviting them to produce their erasers, not about to give them a lesson in contraception. British people who live in flats do not set up home in burst tires. The word 'bum' in British English means buttocks as well as vagrant.
+    "People in Britain do not usually say 'I appreciate it,' have a hard time, zero in, reach out to other people, stay focused, ask to be given a break, refer to the bottom line or get blown away. The word 'scary,' as opposed to 'frightening' or 'alarming, sounds childish to British ears, rather like talking about your buttocks as your bottie. Brits tend not to use the word 'awesome,' a term which, if it were banned in the States, would cause airplanes to fall from the sky and cars to lurch off freeways." ("Sorry, but Do You Speak English?" The Wall Street Journal, June 22-23, 2013)
+
+Dave Barry
+
+"England is a very popular foreign country to visit because the people there speak English. Usually, however, when they get to the crucial part of a sentence they'll use words that they made up, such as scone and ironmonger. As a sophisticated traveler, you should learn some British words so you can avoid communications mixups, as is shown by these examples:
+
+    Example 1: The Unsophisticated Traveler
+    English Waiter: May I help you?
+    Traveler: I'd like an inedible roll, please.
+    English Waiter ( confused): Huh?
+    Example 2: The Sophisticated Traveler
+    English Waiter: May I help you?
+    Traveler: I'd like an ironmonger, please.
+    English Waiter: Coming right up!" 
+
+(Dave Barry's Only Travel Guide You'll Ever Need. Ballantine Books, 1991)
+British English in Academics
+
+Academicians, linguists, and grammarians have explained British English as well, including its comparison to American English, as these passages demonstrate.
+Tom McCarthur
+
+    "The phrase British English has . . . a monolithic quality, as if it offers a single clear-cut variety as a fact of life (alongside providing a brand name for language-teaching purposes). It shares, however, all the ambiguities and tensions in the word British, and as a result can be used and interpreted in two ways, more broadly and more narrowly, within a range of blurring and ambiguity." (The Oxford Guide to World English. Oxford University Press, 2002)
+
+John Algeo
+
+    "Before English speakers began to spread around the world, first in large numbers in America, there was no British English. There was only English. Concepts like 'American English' and 'British English' are defined by comparison. They are relative concepts like 'brother' and 'sister.'" (Preface to The Cambridge History of the English Language: English in North America. Cambridge University Press, 2001)
+
+Geoffrey Leech, Marianne Hundt, Christian Mair, and Nicholas Smith
+
+"Whereas in popular perception, particularly in Britain, there is often fear of a blanket 'Americanization' of British English, our analyses will show that documenting the true extent of the grammatical influence of American English on British English is a complex business. . . . There are a few limited instances of presumably direct American influence on British usage, as in the area of the 'mandative' subjunctive (e.g. we request that this be made public). But the most common constellation by far is that American English reveals itself to be slightly more advanced in shared historical developments, many of which were presumably set in motion in the Early Modern English period, before the streams of British and American English parted." (Change in Contemporary English: A Grammatical Study. Cambridge University Press, 2012)
+Walt Wolfram and Natalie Schilling-Estes
+
+    "Proof that English in America very quickly became distinct from British English is found in the fact that, as early as 1735, British people were complaining about American words and word usages, such as the use of bluff to refer to a bank or cliff. In fact, the term 'Americanism' was coined in the 1780s to refer to particular terms and phrases that were coming to characterize English in the early US but not British English." (American English: Dialects and Variation, 2nd ed. Blackwell, 2006)
+
+Albert C. Baugh and Thomas Cable
+
+    "A writer in the London Daily Mail complained that an English person would find 'positively incomprehensible' the American words commuter, rare (as applied to underdone meat), intern, tuxedo, truck, farming, realtor, mean (nasty), dumb (stupid), enlisted man, seafood, living room, dirt road, and mortician, although some of these have since become normal in British English. It is always unsafe to say what American words a British person will not understand, and there are some pairs [of words] that would be generally 'comprehended' on both sides of the Atlantic. Some words have a deceptive familiarity. Lumber with Americans is timber but in Britain is discarded furniture and the like. Laundry in America is not only the place where clothing and linen are washed but the articles themselves. A lobbyist in England is a parliamentary reporter, not one who attempts to influence the legislative process, and a pressman for Americans is not a reporter but one who works in the pressroom where a newspaper is printed.
+    "It is of course on the level of more colloquial or popular speech that the greatest differences are noted." (A History of the English Language, 5th ed. Routledge, 2002)
+
+British English Accents
+
+Accents—specifically regional accent variations in Britain—are also an important feature of British English, as one British reference explains.
+David Crystal
+
+"Sensitivity about accents is everywhere, but the situation in Britain has always attracted special interest. This is chiefly because there is more regional accent variation in Britain, relative to the size and population of the country, than in any other part of the English-speaking world — a natural result of 1,500 years of accent diversification in an environment which was both highly stratified and (through the Celtic languages) indigenously multilingual. George Bernard Shaw was exaggerating when he had phonetician Henry Higgins say (in Pygmalion) that he could 'place a man within six miles. I can place him within two miles in London. Sometimes within two streets' — but only a little.
+
+"Two major changes have affected English accents in Britain over the past few decades. The attitude of people towards accents has altered in ways that were unpredictable thirty years ago; and some accents have changed their phonetic character very significantly over the same period." ("Language Developments in British English." The Cambridge Companion to Modern British Culture, ed. by Michael Higgins et al. Cambridge University Press, 2010)
+
+Code Kings
+Published in
+
+Code Kings
+·
+Tony Mucci
+
+Tony Mucci
+
+Dec 11, 2020
+·
+2 min read
+·
+Python3 Fix→ UnicodeDecodeError: ‘utf-8’ codec can’t decode byte in position.
+INTRO
+
+I am in the middle of importing some D&B Business data into my database and I was getting this error while trying to run my import.
+THE PROBLEM
+
+When trying to run:
+
+import csvwith open(file_location,encoding='utf-8') as csvfile:
+
+I was getting this:
+
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x84 in position 747: invalid start byte
+
+If you look up 0x84 its a double quotes issue (I swear quotes drive me bonkers sometimes).
+THE SOLUTION
+
+The easiest and fastest way to fix this is to re-encode your CSV. This was an easy fix on Windows. Below are my steps
+
+    Open your CSV in Sublime Text/Notepad
+    Go to File → Save With Encoding (Save As in Notepad)
+    Select UTF-8 for your encoding.
+    Click Save.
+
+After you re-encode your CSV into UTF-8, it will be able to be read by your CSV reader in Python.
+BONUS SOLUTION
+
+A bonus solution that I found on Stack Overflow to convert a file programmatically was:
+
+import codecs
+BLOCKSIZE = 1048576 # or some other, desired size in bytes
+with codecs.open(sourceFileName, "r", "your-source-encoding") as sourceFile:
+    with codecs.open(targetFileName, "w", "utf-8") as targetFile:
+        while True:
+            contents = sourceFile.read(BLOCKSIZE)
+            if not contents:
+                break
+            targetFile.write(contents)
+
+The reason for the BLOCKSIZE is so you don’t overload your memory buffer on your machine. Simply change that number that best fits your ability on the machine you are working on.
+
+Happy Coding!
+
+More from Code Kings
+
+Programming tips & tricks from professionals
+Tony Mucci
+
+Tony Mucci
+
+·Oct 2, 2020
+Vue → How to send multiple parameters to :on-change event on a v-select component
+
+TL;DR Override your method with $event, and then add your parameters after that <v-select @change=”updateMethodHere($event,param2,param3,etc.)”></v-select> INTRO So if you are like me, you tend to forget some of the litter nuances of frameworks. Especially if you’re writing a multiple languages. In 5 minutes, you might touch python for your backend, PHP for…
+Vuejs
+
+2 min read
+Vue → How to send multiple parameters to :on-change event on a v-select component
+
+Share your ideas with millions of readers.
+Write on Medium
+Tony Mucci
+
+Tony Mucci
+
+·Sep 30, 2020
+Skillport.com | Skillsoft.com→ How to skip mandatory training videos to get to the tests faster.
+
+INTRO If you are anything like me, and have common sense in the workplace, you don’t want to waste your time watching videos that re-iterate what you have already learned AND apply on a daily basis in the workplace. Below are the steps to skip through those videos. STEPS Open up Chrome…
+HR
+
+1 min read
+Skillport.com| Skillsoft.com→ How to skip mandatory training videos to get to the tests faster.
+Tony Mucci
+
+Tony Mucci
+
+·Sep 5, 2020
+Python | Windows → How to recursively search a Windows directory for files by keyword/string
+
+THE INTRO I tried searching through a HD that I have for a particular file. However, using the Search in Window Explorer is slow. And using Powershell was even worse. The following code made me want to go be a farmer in the hills… ls DIRECTORY_LOCATION_HERE | Select-String "Blah" So I turned…
+Python
+
+1 min read
+Python | Windows → How to recursively search a Windows directory for files by keyword/string
+Tony Mucci
+
+Tony Mucci
+
+·Aug 25, 2020
+VirtualBox | Ubuntu → How to share a network/local drive in your VM from your host machine.
+
+This is a quick guide on how to successfully share a local drive inside your VM running on Virtualbox. TL;DR In VirtualBox, go to Settings → Shared Folders → Click on Folder with plus sign. Add the location of your drive, click Auto Mount. In your VM, run sudo apt-get install…
+Virtualbox
+
+1 min read
+VirtualBox | Ubuntu → How to share a network/local drive in your VM from your host machine.
+Tony Mucci
+
+Tony Mucci
+
+·Jun 23, 2020
+Laravel | Pusher | Echo | Vue-> Getting multiple responses on single event for Echo?
+
+Intro For a project that I am currently working on, I am creating a chat application within a single page Vue application with a Laravel backend, and then I ran into this problem. Problem I ran into an issue where as I would have users disconnect and reconnect to the chat instance…
+Laravel
+
+1 min read
+Laravel | Pusher | Echo | Vue-> Getting multiple responses on single event for Echo?
+Read more from Code Kings
+Upgrade
+Tony Mucci
+Tony Mucci
+
+Founder of My Company Tools • Co-Founder/CTO of Dree • Co-Founder of Eklect Enterprises. Opinions on this blog are my own.
+Related
+Exception And Error Handling in Python
+We can learn about types of errors.
+Practice Making Simple Application Programs in Python for Beginners — Program 1: Tip Caculator
+Running Zulip development server and running a bot
+OmniAuth — Github
+How OmniAuth Works
+
+Help
+
+Status
+
+Writers
+
+Blog
+
+Careers
+
+Privacy
+
+Terms
+
+About
+
+Knowable
+
+You can now subscribe to get stories delivered directly to your inbox.
+
