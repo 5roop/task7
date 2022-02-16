@@ -132,6 +132,7 @@ def process_item(item:str) -> dict:
             except Exception as e:
                 logging.debug(f"Found error {e} for line:\n\t{line}")
         elif line.count("/") == 0:
+            logging.debug("Passing line with no slashes.")
             continue
         elif line.count("/") == 3:
             try:
