@@ -176,6 +176,8 @@ def process_item(item:str) -> dict:
                     resulting_dict[brittish] = "B"
                     if brittish_ize != american:
                         resulting_dict[american] = "A"
+            except Exception as e:
+                logging.debug(f"Found error {e} for line:\n\t{line}")
         else:
             logging.warning(f"Weird formatting with >3 slashes:\n\t{line}")
     return resulting_dict
