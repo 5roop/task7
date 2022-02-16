@@ -71,6 +71,8 @@ def process_item(item:str) -> dict:
     p = compile(pattern)
     pattern2 = """{flags1}: {version1} / {flags2}: {version2} / {flags3}: {version3}"""
     p2 = compile(pattern2)
+    pattern3 = """{flags1}: {version1} / {flags2}: {version2} / {flags3}: {version3} / {flags4}: {version4}"""
+    p3 = compile(pattern3)
     resulting_dict = dict()
     lines = item.split("\n")
     for line in lines[1:]:
@@ -130,8 +132,52 @@ def process_item(item:str) -> dict:
                         resulting_dict[american] = "A"
             except Exception as e:
                 logging.debug(f"Found error {e} for line:\n\t{line}")
+        elif line.count("/") == 0:
+            continue
+        elif line.count("/") == 3:
+            try:
+                results = p2.parse(line)
+                flags1 = process_flags(results["flags1"])
+                flags2 = process_flags(results["flags2"])
+                flags3 = process_flags(results["flags3"])
+                flags4 = process_flags(results["flags4"])
+                version1 = results["version1"].replace("_", " ").casefold()
+                version2 = results["version2"].replace("_", " ").casefold()
+                version3 = results["version3"].replace("_", " ").casefold()
+                version4 = results["version4"].replace("_", " ").casefold()
+
+                if "A" in flags1:
+                    american = version1
+                if "A" in flags2:
+                    american = version2
+                if "A" in flags3:
+                    american = version3
+                if "A" in flags4:
+                    american = version4
+                if "B" in flags1:
+                    brittish = version1
+                if "B" in flags2:
+                    brittish = version2
+                if "B" in flags3:
+                    brittish = version3
+                if "B" in flags4:
+                    brittish = version4
+                brittish_ize = ""
+                if "Z" in flags1:
+                    brittish_ize = version1
+                if "Z" in flags2:
+                    brittish_ize = version2
+                if "Z" in flags3:
+                    brittish_ize = version3
+                if "Z" in flags4:
+                    brittish_ize = version4
+                
+                if brittish != american:
+                    resulting_dict[brittish] = "B"
+                    if brittish_ize != american:
+                        resulting_dict[american] = "A"
         else:
-            logging.warning(f"Weird formatting with 0 or >2 slashes:\n\t{line}")
+            logging.warning(f"Weird formatting with >3 slashes:\n\t{line}")
     return resulting_dict
 
 def get_lexicon():
