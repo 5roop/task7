@@ -116,10 +116,18 @@ def process_item(item:str) -> dict:
                     brittish = version2
                 if "B" in flags3:
                     brittish = version3
+                brittish_ize = ""
+                if "Z" in flags1:
+                    brittish_ize = version1
+                if "Z" in flags2:
+                    brittish_ize = version2
+                if "Z" in flags3:
+                    brittish_ize = version3
                 
                 if brittish != american:
-                    resulting_dict[american] = "A"
                     resulting_dict[brittish] = "B"
+                    if brittish_ize != american:
+                    resulting_dict[american] = "A"
             except Exception as e:
                 logging.debug(f"Found error {e} for line:")
                 logging.debug(line)
