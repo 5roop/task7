@@ -74,13 +74,18 @@ def preprocess(s:str):
 
 def count_variants(s: str, lex: dict)-> dict:
     counts = dict()
+    per_token = dict()
     for word in preprocess(s).split():
         variant = lex.get(word, None)
         if not variant:
             continue
         logging.info(f"Found word {word}, presumed variant: {variant}.")
         counts[variant] = counts.get(variant, 0) + 1
-    return counts
+        if word in per_token.keys():
+            per_token[word]["count"] += 1
+        else:
+            per_token[word] = {"variant": variant, "count": 1}
+    return counts, per_token
 
 def process_item(item:str) -> dict:
     pattern = """{flags1}: {version1} / {flags2}: {version2}"""
