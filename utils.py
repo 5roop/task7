@@ -198,13 +198,17 @@ def process_item(item:str) -> dict:
             logging.warning(f"Weird formatting with >3 slashes:\n\t{line}")
     return resulting_dict
 
-def get_lexicon():
+def get_lexicon(min_length:int=1, only_verified:bool=False):
     f = "varcon.txt"
     with open(f, "r") as file:
         content = file.read()
     items = content.split("# ")[1:]
     results = {}
     for item in items:
+        if only_verified:
+            if "<verified>" not in item:
+                continue
         results.update(process_item(item))
-
+    results = {key: value for key, value in results.items() if len(key) >= min_length}
     return results
+
