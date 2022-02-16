@@ -127,7 +127,7 @@ def process_item(item:str) -> dict:
                 if brittish != american:
                     resulting_dict[brittish] = "B"
                     if brittish_ize != american:
-                    resulting_dict[american] = "A"
+                        resulting_dict[american] = "A"
             except Exception as e:
                 logging.debug(f"Found error {e} for line:\t\n{line}")
         else:
