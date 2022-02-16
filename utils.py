@@ -66,6 +66,22 @@ def process_flags(flags:str) -> set:
     return set(flags)
 
 
+def preprocess(s:str):
+    for c in chars_to_remove:
+        s = s.replace(c, "")
+    s = s.casefold()
+    return s
+
+def count_variants(s: str, lex: dict)-> dict:
+    counts = dict()
+    for word in preprocess(s).split():
+        variant = lex.get(word, None)
+        if not variant:
+            continue
+        logging.info(f"Found word {word}, presumed variant: {variant}.")
+        counts[variant] = counts.get(variant, 0) + 1
+    return counts
+
 def process_item(item:str) -> dict:
     pattern = """{flags1}: {version1} / {flags2}: {version2}"""
     p = compile(pattern)
