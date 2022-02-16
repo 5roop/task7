@@ -72,7 +72,7 @@ def preprocess(s:str):
     s = s.casefold()
     return s
 
-def count_variants(s: str, lex: dict)-> dict:
+def count_variants(s: str, lex: dict):
     counts = dict()
     per_token = dict()
     for word in preprocess(s).split():
