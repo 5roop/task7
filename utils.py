@@ -129,9 +129,9 @@ def process_item(item:str) -> dict:
                     if brittish_ize != american:
                         resulting_dict[american] = "A"
             except Exception as e:
-                logging.debug(f"Found error {e} for line:\t\n{line}")
+                logging.debug(f"Found error {e} for line:\n\t{line}")
         else:
-            logging.warning(f"Weird formatting with 0 or >2 slashes:\n{line}")
+            logging.warning(f"Weird formatting with 0 or >2 slashes:\n\t{line}")
     return resulting_dict
 
 def get_lexicon():
