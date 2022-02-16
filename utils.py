@@ -94,8 +94,7 @@ def process_item(item:str) -> dict:
                 if (flags1, flags2) == ({"A", "Z"}, {"B"}):
                     resulting_dict[version2] = "B"
             except Exception as e:
-                logging.debug(f"Found error {e} for line:")
-                logging.debug(line)
+                logging.debug(f"Found error {e} for line:\n\t{line}")
         elif line.count("/") == 2:
             try:
                 results = p2.parse(line)
