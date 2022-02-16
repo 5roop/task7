@@ -2734,21 +2734,12 @@ A: blennemesis / B: blennoemesis
 A Dv: blennorrhea / B D: blennorrhoea
 
 # blond <verified> (level 35)
-A Bv C: blond / Av B Cv: blonde | form generally used
-A Bv C: blonds / Av B Cv: blondes | form generally used
-A Bv C: blond's / Av B Cv: blonde's | form generally used
-A Bv C Av B Cv: blonder | form generally used
-A Bv C Av B Cv: blondest | form generally used
-A B: blond | often masculine forms, especially in Brit. English
-A B: blonder | often masculine forms, especially in Brit. English
-A B: blondest | often masculine forms, especially in Brit. English
-A B: blonds | often masculine forms, especially in Brit. English
-A B: blond's | often masculine forms, especially in Brit. English
-A B: blonde | often feminine forms, especially in Brit. English
-A B: blonder | often feminine forms, especially in Brit. English
-A B: blondest | often feminine forms, especially in Brit. English
-A B: blondes | often feminine forms, especially in Brit. English
-A B: blonde's | often feminine forms, especially in Brit. English
+A Bv C: blond / Av B Cv: blonde
+A Bv C: blonds / Av B Cv: blondes
+A Bv C: blond's / Av B Cv: blonde's
+A Bv C Av B Cv: blonder
+A Bv C Av B Cv: blondest
+
 
 # blowzy <verified> (level 50)
 A Bv: blowzy / Av B: blowsy
@@ -2758,11 +2749,6 @@ A Bv: blowziest / Av B: blowsiest
 # bluing (level 35)
 _: bluing / _v: blueing
 _: bluing's / _v: blueing's
-
-# boatswain (level 50)
-_: boatswain / _v: bosun / _V: bo'sun / _V: bos'n / _V: bo's'n
-_: boatswains / _v: bosuns / _V: bo's'ns / _V: bo'suns / _V: bos'ns
-_: boatswain's / _v: bosun's / _V: bo'sun's / _V: bo's'n's / _V: bos'n's
 
 # bobbysoxer (level 60)
 _: bobbysoxer / _v: bobby-soxer
