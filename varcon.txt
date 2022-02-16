@@ -1744,7 +1744,7 @@ A Cv DV: armorless / B C D: armourless
 
 # armory <verified> (level 35)
 A Cv DV: armory / B C D: armoury
-A Cv DV: armories / B C D: armouries # Ox claims "armories" is the British plural but that has got to be a mistake 
+A Cv DV: armories / B C D: armouries
 A Cv DV: armory's / B C D: armoury's
 
 # aromatite (level 95)
