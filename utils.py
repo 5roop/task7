@@ -60,10 +60,11 @@ chars_to_remove = {
 
 }
 
-def process_flags(flags:str) -> Set[str]:
-    """Processes string of varcon flags. 
+
+def process_flags(flags: str) -> Set[str]:
+    """Processes string of varcon flags.
     We are only interested in ABZ flags with no qualifiers.
-    Examples: 
+    Examples:
         'A Bv Zv' -> {'A'}
         'Av B Z_' -> {'B'}
         'A B Cv' -> {'A', 'B'}
@@ -73,13 +74,13 @@ def process_flags(flags:str) -> Set[str]:
 
     Returns:
         set: set of strings "A", "B", "Z".
-    """    
+    """
     flags = flags.split(" ")
     flags = [flag for flag in flags if flag in ["A", "B", "Z"]]
     return set(flags)
 
 
-def preprocess(s:str)->str:
+def preprocess(s: str) -> str:
     """Removes unusual characters and lowercases the string.
 
     Args:
@@ -87,20 +88,21 @@ def preprocess(s:str)->str:
 
     Returns:
         str: output string.
-    """    
+    """
     for c in chars_to_remove:
         s = s.replace(c, "")
     s = s.casefold()
     return s
 
+
 def count_variants(s: str, lex: dict):
     """Counts the variants in the input string based on the lexicon lex.
 
     Returns tuple (counts, per_token_breakdown).
-    Counts look like this: 
+    Counts look like this:
         {"A":3, "B":0}.
     per_token is a dictionary with all the words detected, their counts and their variant:
-        {"word1": 
+        {"word1":
             {"count":3, "variant":"A"}
         }
 
@@ -109,8 +111,8 @@ def count_variants(s: str, lex: dict):
         lex (dict): Lexicon.
 
     Returns:
-        _type_: (counts, per_token). 
-    """    
+        results (tuple): (counts, per_token).
+    """
     counts = dict()
     per_token = dict()
     for word in preprocess(s).split():
@@ -125,7 +127,8 @@ def count_variants(s: str, lex: dict):
             per_token[word] = {"variant": variant, "count": 1}
     return counts, per_token
 
-def process_item(item:str) -> Dict:
+
+def process_item(item: str) -> Dict:
     """Processes a unit of varcon lexicon and returns the results in dictionary form.
 
     Args:
@@ -133,7 +136,7 @@ def process_item(item:str) -> Dict:
 
     Returns:
         Dict: dictionary like {'word1': "B", "word2": "A"}
-    """    
+    """
     pattern = """{flags1}: {version1} / {flags2}: {version2}"""
     p = compile(pattern)
     pattern2 = """{flags1}: {version1} / {flags2}: {version2} / {flags3}: {version3}"""
@@ -154,7 +157,7 @@ def process_item(item:str) -> Dict:
                 flags2 = process_flags(results["flags2"])
                 version1 = results["version1"].replace("_", " ").casefold()
                 version2 = results["version2"].replace("_", " ").casefold()
-                
+
                 if (flags1, flags2) == ({"A"}, {"B"}):
                     resulting_dict[version1] = "A"
                     resulting_dict[version2] = "B"
@@ -191,7 +194,7 @@ def process_item(item:str) -> Dict:
                     brittish_ize = version2
                 if "Z" in flags3:
                     brittish_ize = version3
-                
+
                 if brittish != american:
                     resulting_dict[brittish] = "B"
                     if brittish_ize != american:
@@ -238,7 +241,7 @@ def process_item(item:str) -> Dict:
                     brittish_ize = version3
                 if "Z" in flags4:
                     brittish_ize = version4
-                
+
                 if brittish != american:
                     resulting_dict[brittish] = "B"
                     if brittish_ize != american:
@@ -249,7 +252,8 @@ def process_item(item:str) -> Dict:
             logging.warning(f"Weird formatting with >3 slashes:\n\t{line}")
     return resulting_dict
 
-def get_lexicon(min_length:int=1, only_verified:bool=False)->dict:
+
+def get_lexicon(min_length: int = 1, only_verified: bool = False) -> dict:
     """Generates lexicon from varcon file.
 
     Args:
@@ -258,7 +262,7 @@ def get_lexicon(min_length:int=1, only_verified:bool=False)->dict:
 
     Returns:
         dict: results like {"word1": "A", "word2": "B",...}
-    """    
+    """
     f = "varcon.txt"
     with open(f, "r") as file:
         content = file.read()
@@ -269,6 +273,6 @@ def get_lexicon(min_length:int=1, only_verified:bool=False)->dict:
             if "<verified>" not in item:
                 continue
         results.update(process_item(item))
-    results = {key: value for key, value in results.items() if len(key) >= min_length}
+    results = {key: value for key, value in results.items() if len(key)
+               >= min_length}
     return results
-
