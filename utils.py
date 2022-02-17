@@ -1,7 +1,7 @@
 from parse import compile
 import logging
 import pandas as pd
-from typing import Set, List
+from typing import Set, List, Dict
 from transliterate import translit
 chars_to_remove = {
     '!',
@@ -60,19 +60,57 @@ chars_to_remove = {
 
 }
 
-def process_flags(flags:str) -> set:
+def process_flags(flags:str) -> Set[str]:
+    """Processes string of varcon flags. 
+    We are only interested in ABZ flags with no qualifiers.
+    Examples: 
+        'A Bv Zv' -> {'A'}
+        'Av B Z_' -> {'B'}
+        'A B Cv' -> {'A', 'B'}
+
+    Args:
+        flags (str): flags as they appear in varcon lexicon.
+
+    Returns:
+        set: set of strings "A", "B", "Z".
+    """    
     flags = flags.split(" ")
     flags = [flag for flag in flags if flag in ["A", "B", "Z"]]
     return set(flags)
 
 
-def preprocess(s:str):
+def preprocess(s:str)->str:
+    """Removes unusual characters and lowercases the string.
+
+    Args:
+        s (str): input string.
+
+    Returns:
+        str: output string.
+    """    
     for c in chars_to_remove:
         s = s.replace(c, "")
     s = s.casefold()
     return s
 
 def count_variants(s: str, lex: dict):
+    """Counts the variants in the input string based on the lexicon lex.
+
+    Returns tuple (counts, per_token_breakdown).
+    Counts look like this: 
+        {"A":3, "B":0}.
+    per_token is a dictionary with all the words detected, their counts and their variant:
+        {"word1": 
+            {"count":3, "variant":"A"}
+        }
+
+    Args:
+        s (str): Input string.
+        lex (dict): Lexicon.
+
+    Returns:
+        _type_: (counts, per_token). 
+    """    
     counts = dict()
     per_token = dict()
     for word in preprocess(s).split():
@@ -87,7 +125,15 @@ def count_variants(s: str, lex: dict):
             per_token[word] = {"variant": variant, "count": 1}
     return counts, per_token
 
-def process_item(item:str) -> dict:
+def process_item(item:str) -> Dict:
+    """Processes a unit of varcon lexicon and returns the results in dictionary form.
+
+    Args:
+        item (str): Multiline string from varcon lexicon.
+
+    Returns:
+        Dict: dictionary like {'word1': "B", "word2": "A"}
+    """    
     pattern = """{flags1}: {version1} / {flags2}: {version2}"""
     p = compile(pattern)
     pattern2 = """{flags1}: {version1} / {flags2}: {version2} / {flags3}: {version3}"""
@@ -203,7 +249,16 @@ def process_item(item:str) -> dict:
             logging.warning(f"Weird formatting with >3 slashes:\n\t{line}")
     return resulting_dict
 
-def get_lexicon(min_length:int=1, only_verified:bool=False):
+def get_lexicon(min_length:int=1, only_verified:bool=False)->dict:
+    """Generates lexicon from varcon file.
+
+    Args:
+        min_length (int, optional): Only return words longer than min_length. Defaults to 1.
+        only_verified (bool, optional): Only include words with <verified> flag. Defaults to False.
+
+    Returns:
+        dict: results like {"word1": "A", "word2": "B",...}
+    """    
     f = "varcon.txt"
     with open(f, "r") as file:
         content = file.read()
