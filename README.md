@@ -52,3 +52,13 @@ We can also look at normalized histograms, where the counts have been divided wi
 ![](images/A-B_normalized.png)
 
 This gives us a sense of the magnitude of the variety differences we try to exploit here. On average we can use one word in 200, meaning that for short documents this is probably not the best way to go.
+
+# Use on `hr21.tld_hr.good.lang_English.part01.prevert`
+
+It was found that for 0.559 we have values of 0 for metric A-B, but this could be due to the fact that we found equal number of A and B varieties. If we look into only documents that have no words identified whatsoever, the ratio is 0.530.
+
+If we include all words with length >= 3 (as opposed to only verified words), the metrics improve, but only slightly; the A-B metric is 0 in 0.536 of instances, and we get no words to classify in 0.503 of instances.
+
+Distribution of A-B normalized metric looks like this:
+
+![](images/A_B_normalized_hr_part01.png)
