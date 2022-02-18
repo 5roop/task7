@@ -67,5 +67,17 @@ Distribution of A-B normalized metric looks like this:
 
 Manual inspections yield these examples to be discussed:
 * `{'colors': {'variant': 'A', 'count': 1}, 'colours': {'variant': 'B', 'count': 1}}`
-* `{'kilometer': {'variant': 'A', 'count': 2}, 'centre': {'variant': 'B', 'count': 2}}`
 * `{'center': {'variant': 'A', 'count': 1}, 'centre': {'variant': 'B', 'count': 1}}	`
+* `{'kilometer': {'variant': 'A', 'count': 2}, 'centre': {'variant': 'B', 'count': 2}}`
+* `{'colours': {'variant': 'B', 'count': 4}, 'paneling': {'variant': 'A', 'count': 6}, 'colour': {'variant': 'B', 'count': 2}, 'grey': {'variant': 'B', 'count': 2}, 'aluminum': {'variant': 'A', 'count': 1}, 'center': {'variant': 'A', 'count': 1}}`
+
+In at least one manually inspected case the "text" was just a json dump (id 68695).
+
+# Meeting notes 2022-02-18T14:10:51
+
+* Prepare an output sample (N=O(1000)) for Taja's inspection (JSON, from Vit's data). 
+* Nikola suggests 4 categories: A, B, mixed, and unknown. Taja agrees.
+* mixed preliminary criterion: one variant more than two times more common than the other?
+* Preprocessing: lowercase, take only alpha words.
+* Research possible bias due to plural words being equal to B spelling (`A C: paralyzes / B Cv: paralyses; A B: paralyses | -- pl: paralysis`)
+* Include `voc.tab` into the classifier (from the same zip folder as `varcon.txt`)
