@@ -59,6 +59,8 @@ It was found that for 0.559 we have values of 0 for metric A-B, but this could b
 
 If we include all words with length >= 3 (as opposed to only verified words), the metrics improve, but only slightly; the A-B metric is 0 in 0.536 of instances, and we get no words to classify in 0.503 of instances.
 
+One thing that could rationalize this poor performance is the bilingual nature of the crawl data. We can assume that a part of the documents contains too few english words for successful classification.
+
 Distribution of A-B normalized metric looks like this:
 
 ![](images/A_B_normalized_hr_part01.png)
