@@ -300,6 +300,15 @@ def get_lexicon(**kwargs):
 
 
 def counts_to_category(counts: dict) -> str:
+    """Discretizes counts like {"A": 2, "B":0} to
+    categories A, B, MIX, UNK.
+
+    Args:
+        counts (dict): result of count_variants function.
+
+    Returns:
+        str: category.
+    """    
     A = counts.get("A", 0)
     B = counts.get("B",0)
 
@@ -337,3 +346,39 @@ def get_lexicon_voctab():
         linedict = parse_line(line)
         results.update(linedict)
     return results
+
+def read_prevert(file: str):
+    """Reads the prevertical file and returns a pandas DataFrame.
+
+    Args:
+        file (str): path to the file.
+
+    Returns:
+        pandas.DataFrame: resulting dataframe.
+    """    
+    from bs4 import BeautifulSoup 
+
+    # Reading the data inside the xml file to a variable under the name  data
+    with open(file, 'r') as f:
+        # Note the prefix and suffix:
+        # Without it only the first document is read.
+        filecontent = "<data>" + f.read() + "</data>"
+
+    # Passing the stored data inside the beautifulsoup parser 
+    data = BeautifulSoup(filecontent, 'xml', )
+    docs = data.find_all("doc")
+    parsed_docs = list()
+
+    for doc in docs:
+        doc_id = doc["id"]
+        paragraphs = doc.find_all("p")
+        paragraphs = [p.contents[0].replace("\n", " ") for p in paragraphs]
+        paragraphs = "   ".join(paragraphs)
+        parsed_docs.append({
+            **doc.attrs,
+            "text": paragraphs
+        })
+    import pandas as pd
+    df = pd.DataFrame(data=parsed_docs)
+    return df
+    
