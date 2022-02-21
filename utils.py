@@ -116,6 +116,8 @@ def count_variants(s: str, lex: dict):
     counts = dict()
     per_token = dict()
     for word in preprocess(s).split():
+        if not is_alpha(word):
+            continue
         variant = lex.get(word, None)
         if not variant:
             continue
@@ -126,6 +128,20 @@ def count_variants(s: str, lex: dict):
         else:
             per_token[word] = {"variant": variant, "count": 1}
     return counts, per_token
+
+def is_alpha(token: str) -> bool:
+    """Checks if the input string is strictly lowercase without numerals.
+
+    Args:
+        token (str): Input text.
+
+    Returns:
+        bool: Result of checking.
+    """    
+    import re
+    pattern = "^[a-zšđčćž]+$"
+    compiled_pattern = re.compile(pattern)
+    return bool(compiled_pattern.match(token))
 
 
 def process_item(item: str) -> Dict:
