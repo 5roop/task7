@@ -253,7 +253,7 @@ def process_item(item: str) -> Dict:
     return resulting_dict
 
 
-def get_lexicon(min_length: int = 1, only_verified: bool = False) -> dict:
+def get_lexicon_varcon(min_length: int = 1, only_verified: bool = True) -> dict:
     """Generates lexicon from varcon file.
 
     Args:
@@ -275,4 +275,49 @@ def get_lexicon(min_length: int = 1, only_verified: bool = False) -> dict:
         results.update(process_item(item))
     results = {key: value for key, value in results.items() if len(key)
                >= min_length}
+    return results
+
+def get_lexicon(**kwargs):
+    results_varcon = get_lexicon_varcon(**kwargs)
+    results_voctab = get_lexicon_voctab()
+    return {**results_varcon, **results_voctab}
+
+
+def counts_to_category(counts: dict) -> str:
+    A = counts.get("A", 0)
+    B = counts.get("B",0)
+
+    if A > 2*B:
+        return "A"
+    elif B > 2*A:
+        return "B"
+    elif A == B == 0:
+        return "UNK"
+    else:
+        return "MIX"
+
+def get_lexicon_voctab():
+
+    def parse_line(line:str):
+        line = line.replace("\n", "")
+        As, Bs, *rest = line.split("\t")
+        As = As.split(",")
+        Bs = Bs.split(",")
+        linedict = dict()
+        for A in As:
+            linedict[A.casefold()] = "A"
+        for B in Bs:
+            linedict[B.casefold()] = "B"
+        return linedict
+    f = "voc.tab"
+    with open(f, "r") as file:
+        content = file.readlines()
+
+    results = dict()
+
+    for line in content:
+        if "(" in line:
+            continue
+        linedict = parse_line(line)
+        results.update(linedict)
     return results
