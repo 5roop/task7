@@ -365,7 +365,7 @@ def read_prevert(file: str):
         filecontent = "<data>" + f.read() + "</data>"
 
     # Passing the stored data inside the beautifulsoup parser 
-    data = BeautifulSoup(filecontent,)
+    data = BeautifulSoup(filecontent,"lxml")
     docs = data.find_all("doc")
     parsed_docs = list()
 
