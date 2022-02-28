@@ -291,6 +291,7 @@ def get_lexicon_varcon(min_length: int = 1, only_verified: bool = True) -> dict:
         results.update(process_item(item))
     results = {key: value for key, value in results.items() if len(key)
                >= min_length}
+    return results
 
 
 def get_lexicon(**kwargs):
@@ -304,11 +305,16 @@ def get_lexicon(**kwargs):
             del results[key]
         except KeyError:
             continue
-        
+
     # Filter additional keys:
-    for key in ["underground", "tube", 
-                "car", "rubber", "fall",
-                "flat", "engine"]:
+    for key in [
+     "underground", "underground's","undergrounds",
+     "tube", "tube's", "tubes"
+     "car", "cars", "car's",
+     "rubber","rubbers", "rubber's",
+     "fall", "falls", "fall's",
+     "flat", "flat's", "flats",
+     "engine", "engine's", "engines"]:
         try:
             del results[key]
         except KeyError:
