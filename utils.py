@@ -294,6 +294,11 @@ def get_lexicon_varcon(min_length: int = 1, only_verified: bool = True) -> dict:
     # Filter false hits that can only be removed with gramatical information:
     for key in [k for k in results.keys() if k.endswith("yses")]:
         del results[key]
+    # Filter additional keys:
+    for key in ["underground", "tube", 
+                "car", "rubber", "fall",
+                "flat", "engine"]:
+        del results[key]
     return results
 
 def get_lexicon(**kwargs):
