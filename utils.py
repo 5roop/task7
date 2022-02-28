@@ -345,6 +345,8 @@ def get_lexicon_voctab():
             continue
         linedict = parse_line(line)
         results.update(linedict)
+    # Filter false hits that can only be removed gramatically:
+    results = [k for k in results.keys() if "yses" not in k]
     return results
 
 def read_prevert(file: str):
