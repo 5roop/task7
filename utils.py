@@ -291,20 +291,29 @@ def get_lexicon_varcon(min_length: int = 1, only_verified: bool = True) -> dict:
         results.update(process_item(item))
     results = {key: value for key, value in results.items() if len(key)
                >= min_length}
-    # Filter false hits that can only be removed with gramatical information:
-    for key in [k for k in results.keys() if k.endswith("yses")]:
-        del results[key]
-    # Filter additional keys:
-    for key in ["underground", "tube", 
-                "car", "rubber", "fall",
-                "flat", "engine"]:
-        del results[key]
-    return results
+
 
 def get_lexicon(**kwargs):
     results_varcon = get_lexicon_varcon(**kwargs)
     results_voctab = get_lexicon_voctab()
-    return {**results_varcon, **results_voctab}
+    results = {**results_varcon, **results_voctab}
+
+    # Filter false hits that can only be removed with gramatical information:
+    for key in [k for k in results.keys() if k.endswith("yses")]:
+        try:
+            del results[key]
+        except KeyError:
+            continue
+        
+    # Filter additional keys:
+    for key in ["underground", "tube", 
+                "car", "rubber", "fall",
+                "flat", "engine"]:
+        try:
+            del results[key]
+        except KeyError:
+            continue
+    return results
 
 
 def counts_to_category(counts: dict) -> str:
