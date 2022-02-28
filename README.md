@@ -93,13 +93,13 @@ To improve classifier's performance some errors were identified and corrected:
 * from `truck - lorry,van` *van* was deleted because it is also used in A variety
 * `underground` and `tube` (subway,underground - tube)
 * `car` (automobile - car)
-* `holidays`
 * `rubber` (eraser - rubber, but rubber (material) is far more common use)
 * `fall` (fall -autumn)
 * `flat` (flat - puncture)
+*  whole `motor - engine` pair
 
 Possible candidates for deletion:
-* engine (motor - engine)
+* `holidays`
 
 # Temporal performance
 
