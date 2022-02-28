@@ -90,7 +90,7 @@ To improve classifier's performance some errors were identified and corrected:
 * `can - tin` pair was deleted due to frequent false detections.
 * `cookie(s)` were deleted, but `biscuit(s)` were left.
 * `analyses` and similar words were deleted, as it is impossible to discriminate B verb `to analyse` from A plural of `analysis`
-* from `truck - lorry,van` van was deleted because it is also used in A variety
+* from `truck - lorry,van` *van* was deleted because it is also used in A variety
 
 Possible candidates for deletion:
 * underground and tube (subway,underground - tube)
