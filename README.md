@@ -81,3 +81,22 @@ In at least one manually inspected case the "text" was just a json dump (id 6869
 * Preprocessing: lowercase, take only alpha words.
 * Research possible bias due to plural words being equal to B spelling (`A C: paralyzes / B Cv: paralyses; A B: paralyses | -- pl: paralysis`)
 * Include `voc.tab` into the classifier (from the same zip folder as `varcon.txt`)
+
+
+
+# Addendum 2022-02-24T09:18:22
+
+To improve classifier's performance some errors were identified and corrected:
+* `can - tin` pair was deleted due to frequent false detections.
+* `cookie(s)` were deleted, but `biscuit(s)` were left.
+* `analyses` and similar words were deleted, as it is impossible to discriminate B verb `to analyse` from A plural of `analysis`
+* from `truck - lorry,van` van was deleted because it is also used in A variety
+
+Possible candidates for deletion:
+* underground and tube (subway,underground - tube)
+* car (automobile - car)
+* holidays
+* rubber (eraser - rubber, but rubber (material) is far more common use)
+* fall (fall -autumn)
+* flat (flat - puncture)
+* engine (motor - engine)
