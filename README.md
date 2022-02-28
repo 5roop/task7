@@ -100,3 +100,7 @@ To improve classifier's performance some errors were identified and corrected:
 
 Possible candidates for deletion:
 * engine (motor - engine)
+
+# Temporal performance
+
+For a file of 3.1 GB I need about 1.2 minutes to parse it and calculate the statistics. The major part of this is needed for the parsing of the prevertical files and the classification is actually pretty fast (7 seconds).
