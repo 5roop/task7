@@ -105,3 +105,52 @@ Possible candidates for deletion:
 # Temporal performance
 
 For a file of 3.1 GB I need about 1.2 minutes to parse it and calculate the statistics. The major part of this is needed for the parsing of the prevertical files and the classification is actually pretty fast (7 seconds).
+
+On `GloWBe-and-NOW-corpus-sample.json` (kindly provided by Taja) the classifier outputs the following:
+
+| country, detected variant | text |
+|:--------------------------|-----:|
+| ('GB', 'A')               |   51 |
+| ('GB', 'B')               |  472 |
+| ('GB', 'MIX')             |   77 |
+| ('GB', 'UNK')             |  124 |
+| ('US', 'A')               |  344 |
+| ('US', 'B')               |   82 |
+| ('US', 'MIX')             |  138 |
+| ('US', 'UNK')             |  157 |
+
+We can see that for documents originating in GB we indeed get about 90% A/B predictions in the correct category (`472/(472+51)`). For US documents the stats are a bit lower, a smidgeon over 80%. We can note that the `UNK` and `MIX` categories never outperform the presumed correct variety.
+
+## Most common B words in US docs:
+
+```
+('film', 11),
+ ('car', 11),
+ ('shop', 7),
+ ('holiday', 7),
+ ('cross', 6),
+ ('movie', 5),
+ ('centre', 5),
+ ('organisation', 5),
+ ('behaviour', 5),
+ ('somewhere', 5),
+ ('films', 4),
+ ('mobile', 4),
+ ('travelled', 4)
+ ```
+
+ ## Most common A words in GB docs:
+
+```
+('store', 10),
+ ('gas', 6),
+ ('center', 6),
+ ('movie', 6),
+ ('favorite', 5),
+ ('film', 3),
+ ('cross', 3),
+ ('crazy', 3),
+ ('car', 3),
+ ('stores', 3),
+ ('centers', 2)
+ ```
