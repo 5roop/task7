@@ -97,6 +97,7 @@ To improve classifier's performance some errors were identified and corrected:
 * `fall` (fall -autumn)
 * `flat` (flat - puncture)
 *  whole `motor - engine` pair
+*  cross from `mad	angry,cross	` pair
 
 Possible candidates for deletion:
 * `holidays`
