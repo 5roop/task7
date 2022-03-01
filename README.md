@@ -101,6 +101,8 @@ To improve classifier's performance some errors were identified and corrected:
 
 Possible candidates for deletion:
 * `holidays`
+* `car` from `automobile - car` pair
+* `gas` from `petrol - gas`  pair
 
 # Temporal performance
 
@@ -124,33 +126,39 @@ We can see that for documents originating in GB we indeed get about 90% A/B pred
 ## Most common B words in US docs:
 
 ```
-('film', 11),
- ('car', 11),
- ('shop', 7),
- ('holiday', 7),
- ('cross', 6),
- ('movie', 5),
- ('centre', 5),
- ('organisation', 5),
- ('behaviour', 5),
+('car', 33),
+ ('film', 19),
+ ('shop', 14),
+ ('holiday', 11),
+ ('mobile', 11),
+ ('films', 10),
+ ('grey', 9),
+ ('centre', 6),
+ ('organisation', 6),
+ ('behaviour', 6),
+ ('shops', 6),
+ ('travelled', 6),
  ('somewhere', 5),
- ('films', 4),
- ('mobile', 4),
- ('travelled', 4)
+ ('colour', 5),
+ ('movie', 4),
  ```
 
  ## Most common A words in GB docs:
 
 ```
-('store', 10),
- ('gas', 6),
- ('center', 6),
- ('movie', 6),
- ('favorite', 5),
- ('film', 3),
- ('cross', 3),
- ('crazy', 3),
- ('car', 3),
- ('stores', 3),
- ('centers', 2)
+('gas', 59),
+ ('hood', 31),
+ ('movie', 23),
+ ('store', 19),
+ ('center', 15),
+ ('attorney', 9),
+ ('centers', 7),
+ ('trailer', 7),
+ ('favorite', 6),
+ ('subway', 5),
+ ('armour', 5),
+ ('diaper', 5),
+ ('film', 4),
+ ('stores', 4),
+ ('theater', 3),
  ```
