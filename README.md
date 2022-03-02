@@ -103,6 +103,7 @@ Possible candidates for deletion:
 * `holidays`
 * `car` from `automobile - car` pair
 * `gas` from `petrol - gas`  pair
+* `diaper` from `diaper - nappy` pair
 
 # Temporal performance
 
