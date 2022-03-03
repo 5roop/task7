@@ -211,3 +211,18 @@ After Taja's intervention voc.tab was corrected again. Now we take a look at wor
  ('organisations', 4),
  ('travelling', 4)
 ```
+
+## Performance on labeled globwe+now corpus
+
+As we can see, our interventions barely reduced the number of A variants in GB documents, but the number of B variants in US documents dropped for about a factor of 2. Due to the reduced number of keys we take into account, we increase the counts in `UNK` category, but this is in line with the mission directive of producing a good classifier that makes right decisions when it has enough data, albeit not every time.
+
+|               |   text |
+|:--------------|-------:|
+| ('GB', 'A')   |     50 |
+| ('GB', 'B')   |    459 |
+| ('GB', 'MIX') |     32 |
+| ('GB', 'UNK') |    183 |
+| ('US', 'A')   |    404 |
+| ('US', 'B')   |     43 |
+| ('US', 'MIX') |     25 |
+| ('US', 'UNK') |    249 |
