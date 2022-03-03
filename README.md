@@ -163,3 +163,18 @@ We can see that for documents originating in GB we indeed get about 90% A/B pred
  ('stores', 4),
  ('theater', 3),
  ```
+
+# Addendum 2022-03-03T10:09:21
+
+Line profiling hinted that in case the function would be pickled and used on individual texts the performance would be 
+reduced due to its frequent vocabulary generation. I propose the variety be generated as follows:
+
+```python
+from utils import count_variants, get_lexicon, counts_to_category
+
+text = "Cheerio, who amongst you would fancy a biscuit?"
+lex = get_lexicon()
+variant_detector_count = count_variants(text, lex)[0]
+
+variety = counts_to_category(variant_detector_count)  # -> "B"
+```
