@@ -178,3 +178,36 @@ variant_detector_count = count_variants(text, lex)[0]
 
 variety = counts_to_category(variant_detector_count)  # -> "B"
 ```
+
+# Addendum 2022-03-03T14:29:42
+
+After Taja's intervention voc.tab was corrected again. Now we take a look at words found in wrongly classified groups:
+
+## American words in GB docs:
+
+```('gas', 59),
+ ('hood', 31),
+ ('movie', 23),
+ ('store', 19),
+ ('center', 15),
+ ('attorney', 9),
+ ('centers', 7),
+ ('trailer', 7),
+ ('favorite', 6),
+ ('subway', 5)
+```
+
+## Brittish words in US docs:
+
+```
+('car', 33),
+ ('film', 19),
+ ('shop', 14),
+ ('holiday', 11),
+ ('mobile', 11),
+ ('films', 10),
+ ('grey', 9),
+ ('centre', 6),
+ ('organisation', 6),
+ ('behaviour', 6)
+```
