@@ -185,29 +185,29 @@ After Taja's intervention voc.tab was corrected again. Now we take a look at wor
 
 ## American words in GB docs:
 
-```('gas', 59),
- ('hood', 31),
- ('movie', 23),
- ('store', 19),
- ('center', 15),
- ('attorney', 9),
- ('centers', 7),
- ('trailer', 7),
- ('favorite', 6),
- ('subway', 5)
+```('movie', 38),
+ ('center', 28),
+ ('favorite', 9),
+ ('centers', 8),
+ ('movies', 6),
+ ('diaper', 5),
+ ('harbor', 5),
+ ('colors', 4),
+ ('theater', 3),
+ ('theatre', 3)
 ```
 
 ## Brittish words in US docs:
 
 ```
-('car', 33),
- ('film', 19),
- ('shop', 14),
- ('holiday', 11),
- ('mobile', 11),
- ('films', 10),
- ('grey', 9),
- ('centre', 6),
+('grey', 9),
+ ('centre', 7),
+ ('travelled', 7),
  ('organisation', 6),
- ('behaviour', 6)
+ ('behaviour', 6),
+ ('amongst', 5),
+ ('colour', 5),
+ ('travellers', 4),
+ ('organisations', 4),
+ ('travelling', 4)
 ```
