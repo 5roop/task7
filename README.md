@@ -226,3 +226,11 @@ As we can see, our interventions barely reduced the number of A variants in GB d
 | ('US', 'B')   |     43 |
 | ('US', 'MIX') |     25 |
 | ('US', 'UNK') |    249 |
+
+# Meeting notes 2022-03-04T14:46:47
+
+Future actions:
+* Check Varcon & Voc.tab licenses!
+* Publish the ABC on macocu github repo. It can be pickled, but document all the changes to the varcon and voc.tab.
+* Take parallel `tmx` data, concatenate paragraphs from the same document, perform document-level classification.
+* Analyze results. How much UNK do we get? Are all the docs from the same domain of the same variant?
