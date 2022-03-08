@@ -257,3 +257,7 @@ The results of the classification is as follows:
 | MIX     |   2302 |
 
 I also extracted domains from urls. Now the only choice to make is visualization.
+
+If I calculate ratios of american vs british variant document per domain, I can plot the following histogram:
+
+![](images/8_per_domain_distributions.png)
