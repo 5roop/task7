@@ -1,5 +1,6 @@
 from parse import compile
 import logging
+import pickle
 import pandas as pd
 from typing import Set, List, Dict
 from transliterate import translit
@@ -406,3 +407,31 @@ def read_prevert(file: str):
     df = pd.DataFrame(data=parsed_docs)
     return df
     
+
+
+def get_variant(text: str, lex=None) -> str:
+    """Quick way to classify text. 
+
+    Loads the lexicon, preprocesses the string. Returns the predicted 
+    category {'A', 'B', 'UNK', 'MIX'}.
+
+    Args:
+        text (str): input string.
+
+    Returns:
+        str: category {'A', 'B', 'UNK', 'MIX'}
+    """    
+    if not lex:
+        lex = load_lexicon()
+    variant_detector_count = count_variants(text, lex)[0]
+    return counts_to_category(variant_detector_count) 
+
+def load_lexicon()-> dict:
+    """Loads 'lexicon.pickle'.
+
+    Returns:
+        dict: lexicon for variety identification.
+    """    
+    with open("lexicon.pickle", "rb") as f:
+        lex = pickle.load(f)
+    return lex
