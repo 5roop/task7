@@ -261,3 +261,8 @@ I also extracted domains from urls. Now the only choice to make is visualization
 If I calculate ratios of american vs british variant document per domain, I can plot the following histogram:
 
 ![](images/8_per_domain_distributions.png)
+
+If we discard UNK and MIX instances and look only the distribution of ratios of A to A/B, we get:
+
+![](images/8_distribution_of_A_to_AB_ratios.png)
+ 
