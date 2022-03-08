@@ -266,3 +266,11 @@ If we discard UNK and MIX instances and look only the distribution of ratios of 
 
 ![](images/8_distribution_of_A_to_AB_ratios.png)
  
+
+# Meeting notes 2022-03-08T14:17:33
+
+* Look at domains with at least 3 A/B classifications
+* Calculate the most prevalent one (if tied:random), apply to all docs in the domain
+* Previous labels: true, new labels: predicted
+* Calculate clf metrics 
+* Calculate coverage: how many UNK docs can we "fix" with this method?
