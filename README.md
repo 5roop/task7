@@ -216,16 +216,16 @@ After Taja's intervention voc.tab was corrected again. Now we take a look at wor
 
 As we can see, our interventions barely reduced the number of A variants in GB documents, but the number of B variants in US documents dropped for about a factor of 2. Due to the reduced number of keys we take into account, we increase the counts in `UNK` category, but this is in line with the mission directive of producing a good classifier that makes right decisions when it has enough data, albeit not every time.
 
-|               |   text |
-|:--------------|-------:|
-| ('GB', 'A')   |     50 |
-| ('GB', 'B')   |    459 |
-| ('GB', 'MIX') |     32 |
-| ('GB', 'UNK') |    183 |
-| ('US', 'A')   |    404 |
-| ('US', 'B')   |     43 |
-| ('US', 'MIX') |     25 |
-| ('US', 'UNK') |    249 |
+|               | text |
+|:--------------|-----:|
+| ('GB', 'A')   |   50 |
+| ('GB', 'B')   |  459 |
+| ('GB', 'MIX') |   32 |
+| ('GB', 'UNK') |  183 |
+| ('US', 'A')   |  404 |
+| ('US', 'B')   |   43 |
+| ('US', 'MIX') |   25 |
+| ('US', 'UNK') |  249 |
 
 # Meeting notes 2022-03-04T14:46:47
 
@@ -234,3 +234,26 @@ Future actions:
 * ✓ Publish the ABC on macocu github repo. It can be pickled, but document all the changes to the varcon and voc.tab.
 * Take parallel `tmx` data, concatenate paragraphs from the same document, perform document-level classification. See mail from LEO on 2022-03-01.
 * Analyze results. How much UNK do we get? Are all the docs from the same domain of the same variant?
+
+
+
+# Addendum 2022-03-07T13:59:21
+
+Parsing `tmx` files is proving quite a challenge. After failures on en-sl files I tried en-mk due to their smaller size, but even so BeautifulSoup takes a long time to parse. Finally Taja gave me a neat advice: parse the tab separated text files instead. This worked.
+
+Remark on input data: without much inspection I found a few examples of Montenegrin text where I expected English.
+
+The data was grouped by urls and classified. The resulting distribution of character lengths looks like this:
+
+![](images/8_distribution.png)
+
+The results of the classification is as follows:
+
+| variant | counts |
+|:--------|-------:|
+| UNK     |  75111 |
+| A       |  17974 |
+| B       |   9647 |
+| MIX     |   2302 |
+
+I also extracted domains from urls. Now the only choice to make is visualization.
