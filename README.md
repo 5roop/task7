@@ -241,7 +241,7 @@ Future actions:
 
 Parsing `tmx` files is proving quite a challenge. After failures on en-sl files I tried en-mk due to their smaller size, but even so BeautifulSoup takes a long time to parse. Finally Taja gave me a neat advice: parse the tab separated text files instead. This worked.
 
-Remark on input data: without much inspection I found a few examples of Montenegrin text where I expected English.
+Remark on input data: without much inspection I found a few examples of Macedonian text where I expected English.
 
 The data was grouped by urls and classified. The resulting distribution of character lengths looks like this:
 
@@ -274,3 +274,4 @@ If we discard UNK and MIX instances and look only the distribution of ratios of 
 * Previous labels: true, new labels: predicted
 * Calculate clf metrics 
 * Calculate coverage: how many UNK docs can we "fix" with this method?
+* Prepare presentation for tomorrow: 7mins, googledocs, concept, results, domain-level-fix... 
