@@ -145,7 +145,7 @@ def is_alpha(token: str) -> bool:
     return bool(compiled_pattern.match(token))
 
 
-def process_item(item: str) -> Dict:
+def process_item(item: str, balanced=False) -> Dict:
     """Processes a unit of varcon lexicon and returns the results in dictionary form.
 
     Args:
@@ -179,7 +179,8 @@ def process_item(item: str) -> Dict:
                     resulting_dict[version1] = "A"
                     resulting_dict[version2] = "B"
                 if (flags1, flags2) == ({"A", "Z"}, {"B"}):
-                    resulting_dict[version2] = "B"
+                    if balanced == False:
+                        resulting_dict[version2] = "B"
             except Exception as e:
                 logging.debug(f"Found error {e} for line:\n\t{line}")
         elif line.count("/") == 2:
@@ -191,7 +192,6 @@ def process_item(item: str) -> Dict:
                 version1 = results["version1"].replace("_", " ").casefold()
                 version2 = results["version2"].replace("_", " ").casefold()
                 version3 = results["version3"].replace("_", " ").casefold()
-
                 if "A" in flags1:
                     american = version1
                 if "A" in flags2:
@@ -211,7 +211,9 @@ def process_item(item: str) -> Dict:
                     brittish_ize = version2
                 if "Z" in flags3:
                     brittish_ize = version3
-
+                if balanced==True:
+                    if brittish_ize != "":
+                        continue
                 if brittish != american:
                     resulting_dict[brittish] = "B"
                     if brittish_ize != american:
@@ -258,7 +260,8 @@ def process_item(item: str) -> Dict:
                     brittish_ize = version3
                 if "Z" in flags4:
                     brittish_ize = version4
-
+                if balanced == False and brittish_ize != "":
+                    continue
                 if brittish != american:
                     resulting_dict[brittish] = "B"
                     if brittish_ize != american:
@@ -270,7 +273,7 @@ def process_item(item: str) -> Dict:
     return resulting_dict
 
 
-def get_lexicon_varcon(min_length: int = 1, only_verified: bool = True) -> dict:
+def get_lexicon_varcon(min_length: int = 1, only_verified: bool = True, balanced=False) -> dict:
     """Generates lexicon from varcon file.
 
     Args:
@@ -289,7 +292,7 @@ def get_lexicon_varcon(min_length: int = 1, only_verified: bool = True) -> dict:
         if only_verified:
             if "<verified>" not in item:
                 continue
-        results.update(process_item(item))
+        results.update(process_item(item, balanced=balanced))
     results = {key: value for key, value in results.items() if len(key)
                >= min_length}
     return results
