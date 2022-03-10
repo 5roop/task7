@@ -294,7 +294,7 @@ If we treat the old lexicon as generating true labels and the new (balanced) lex
 Remarks:
 * As we would expect the effect of lexicon balancing is not significant on A instances.
 * 23% of B instances get clasified as UNK, meaning that in these cases we do not find any significant word at all.
-* No MIX instance is reclassified to UNK, which is also expected if we only remove B keys. Interestingly, for a small percentage of MIX instances balanced lexicon reclassifies them as B. This might be due to A words that get removed from lexicon (so instances, where American, British and British -ize version are pairwise different and we now actually have less A words as before.)
+* No MIX instance is reclassified to UNK, which is also expected if we only remove B keys. Interestingly, for a small percentage of MIX instances balanced lexicon reclassifies them as B. This might be due to A words that get removed from lexicon (so instances, where American, British and British -ize version are pairwise different, e.g. `tranquilizer - tranquillizer - tranquilliser`. In these rare cases balancing actually decreases the number of A keys, meaning that the instance could turn from UNK to B. )
 * UNKs stay UNKs, which is logical.
 
 I felt sorry for the B instances that were now in the UNK bin, so I manually inspected the text and the keyword breakdown. (If you are curious, check out [the dump](10_B_UNKs.json).) Mostly I saw british -ise spelling, but also 'enquiry', which is worrisome, so I inspected varcon and found:
