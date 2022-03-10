@@ -313,4 +313,6 @@ I also noticed the same problem with `amongst`:
 A B. Z: among / AV B Zv: amongst
 ```
 
-For now I shall not correct the varcon file, but I'd value your input on this issue. It seems the Z tag is wrong here.
+For now I shall not correct the varcon file, but I'd value your input on this issue. ~~It seems the Z tag is wrong here.~~ Not really, it can be thought of as the other Z examples; B variant uses both, but A variant uses only one of them.
+
+
