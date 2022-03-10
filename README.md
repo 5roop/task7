@@ -275,3 +275,19 @@ If we discard UNK and MIX instances and look only the distribution of ratios of 
 * Calculate clf metrics 
 * Calculate coverage: how many UNK docs can we "fix" with this method?
 * Prepare presentation for tomorrow: 7mins, googledocs, concept, results, domain-level-fix... 
+
+
+
+# Addendum 2022-03-10T08:34:42
+
+As discussed yesterday after biweekly meeting, I implemented additional filtering in the lexicon generating function in order to balance the B and A keys in the classifier. I was impressed at how well this can be done with only inhibiting british 'ize' spelling:
+
+```
+Unbalanced:  Counter({'B': 4410, 'A': 1697})
+Balanced:  Counter({'A': 1676, 'B': 1658})
+```
+
+If we treat the old lexicon as generating true labels and the new (balanced) lexicon as generating predictions, we can plot a confusion matrix. For clarity the rows are normalized.
+
+![](images/10_balun_cm.png)
+
